@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title>Play Types</title>
     <style type="text/css">
         .highcharts-tooltip h3 {
@@ -14,8 +15,27 @@
             visibility: hidden;
             display: none;
         }
+
         .highcharts-button-symbol {
             visibility: hidden;
+        }
+
+        .body-text {
+            margin-left: 10%;
+            font-family: 'Lato', sans-serif;
+            font-size: 16px;
+        }
+
+        a {
+            color: darkslateblue;
+            font-family: 'Lato', sans-serif;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
         }
     </style>
 </head>
@@ -27,6 +47,22 @@
     <script src="./code/modules/export-data.js"></script>
 
     <div id="container" style="height: 800px; min-width: 600px; max-width: 1200px; margin: 0 auto"></div>
+    <p class="body-text">* This map represents the play types in Sociality-Rule quadrant.</p>
+    <p class="body-text">* In graph, x-axis shows the flexibility of rule definitions in the play and y-axis shows socialization of children.</p>
+    <p class="body-text">* This map cannot be generalized. The plays are categorized according to data collected from Bademli Village kids.</p>
+    <p class="body-text">* Data is collected with interviews, observations from play hours, preparing newspaper, drawing with kids. You can find
+        the detailed methods descriptions: . </p>
+    <p>
+        <a href="./images/rule_categories.png" target="_blank">
+            <img src="./images/rule_categories.png">
+        </a>
+    </p>
+    <p>
+        <a href="./images/social_categories.png" target="_blank">
+            <img src="./images/social_categories.png">
+        </a>
+    </p>
+
 
     <script type="text/javascript">
 
@@ -99,8 +135,11 @@
             tooltip: {
                 useHTML: true,
                 headerFormat: '<table>',
-                pointFormat: '<tr><th colspan="2"><h3>{point.name}</h3></th></tr>' +
-                    '<tr><th colspan="2"><strong>Games: </strong><p>{point.games}</p></th></tr>',
+                style: {
+                    pointerEvents: 'auto'
+                },
+                pointFormat: "<a href='./images/{point.short}.html' target='_blank'><h3>{point.name}</h3></a></th></tr>" +
+                    "<tr><th colspan='2'><strong>Games: </strong><p>{point.games}</p></th></tr>",
                 footerFormat: '</table>',
                 followPointer: true
             },
@@ -117,19 +156,19 @@
             series: [{
                 name: 'PLAY TYPES',
                 data: [
-                    { x: -100, y: 160, z: 5, name: 'Fixed Team Play' , games: 'Basket, Volley, Football, Yakartop, Zula'},
-                    { x: -60, y: 160, z: 2, name: 'Flexible Team Play', games: 'Nine Stones, Long Donkey' },
-                    { x: -30, y: 160, z: 1, name: 'Competitive Collaboration', games: 'Hot-Cold Object Detect' },
-                    { x: -0, y: 160, z: 2, name: 'Cooperative Play', games: 'Skipping Rope, Mini Mini Birler' },
-                    { x: 100, y: 160, z: 3, name: 'Imaginative Play', games: 'Playing Grown Ups, Food Cooking Play, Building Dollhouse'},
-                    { x: -100, y: 80, z: 3, name: '1 on 1 on 1 on ...', games: 'Singing Game, SOS, BLUM' },
-                    { x: -40, y: 80, z: 9, name: 'Double Competition', games: 'Blind Monkey, Hide&Seek, Catch th Napkin, Thife-Police(1), Catch the Corner, ATOM, Blind Seeker, Follow Lines' },
-                    { x: 20, y: 80, z: 1, name: 'All Against One', games: 'SIMIT' },
-                    { x: 70, y: 60, z: 1, name: 'Social Medium-Guided Play', games: 'Youtube, Swimming, Bike' },
-                    { x: 100, y: 60, z: 2, name: 'Tool-Inspired Play', games: 'Shooting Caps, Flying Swing' },
-                    { x: 70, y: 0, z: 1, name: 'Construction Kit', games: 'Minecraft' },
-                    { x: -100, y: -160, z: 6, name: 'Goal Oriented Game', games: 'Snake, Papas Sushi, Mobile Legends, Motor Cycle, Ball Falling, Puzzle'},
-                    { x: 100, y: -160, z: 2, name: 'Individual Medium-Guided Play', games: 'Playing In Flower Bed, Drawing'},
+                    { x: -100, y: 160, z: 5, short: 'fixtp', name: 'Fixed Team Play', games: 'Basket, Volley, Football, Yakartop, Zula' },
+                    { x: -60, y: 160, z: 2, short: 'flextp', name: 'Flexible Team Play', games: 'Nine Stones, Long Donkey' },
+                    { x: -30, y: 160, z: 1, short: 'compcol', name: 'Competitive Collaboration', games: 'Hot-Cold Object Detect' },
+                    { x: -0, y: 160, z: 2, short: 'coop', name: 'Cooperative Play', games: 'Skipping Rope, Mini Mini Birler' },
+                    { x: 100, y: 160, z: 3, short: 'imag', name: 'Imaginative Play', games: 'Playing Grown Ups, Food Cooking Play, Building Dollhouse' },
+                    { x: -100, y: 80, z: 3, short: 'oneon', name: '1 on 1 on 1 on ...', games: 'Singing Game, SOS, BLUM' },
+                    { x: -40, y: 80, z: 9, short: 'dblcom', name: 'Double Competition', games: 'Blind Monkey, Hide&Seek, Catch th Napkin, Thife-Police(1), Catch the Corner, ATOM, Blind Seeker, Follow Lines' },
+                    { x: 20, y: 80, z: 1, short: 'allone', name: 'All Against One', games: 'SIMIT' },
+                    { x: 70, y: 60, z: 1, short: 'medgud', name: 'Social Medium-Guided Play', games: 'Youtube, Swimming, Bike' },
+                    { x: 100, y: 60, z: 2, short: 'toolinsp', name: 'Tool-Inspired Play', games: 'Shooting Caps, Flying Swing' },
+                    { x: 70, y: 0, z: 1, short: 'conskit', name: 'Construction Kit', games: 'Minecraft' },
+                    { x: -100, y: -160, z: 6, short: 'goalori', name: 'Goal Oriented Game', games: 'Snake, Papas Sushi, Mobile Legends, Motor Cycle, Ball Falling, Puzzle' },
+                    { x: 100, y: -160, z: 2, short: 'indmedgud', name: 'Individual Medium-Guided Play', games: 'Playing In Flower Bed, Drawing' },
                     { x: 100, y: -160, z: 0.5 },
                 ],
                 marker: {
